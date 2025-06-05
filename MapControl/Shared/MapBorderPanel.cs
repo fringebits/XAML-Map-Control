@@ -8,6 +8,8 @@ using Microsoft.UI.Xaml;
 
 namespace MapControl
 {
+    using Point = Helix.CoreTypes.Point;
+
     /// <summary>
     /// A MapPanel that adjusts the ViewPosition property of its child elements so that
     /// elements that would be outside the current viewport are arranged on a border area.

@@ -9,6 +9,8 @@ using Microsoft.UI.Xaml;
 
 namespace MapControl
 {
+    using Helix.MapCore;
+
     /// <summary>
     /// A multi-polygon defined by a collection of collections of Locations.
     /// Allows to draw filled polygons with holes.

@@ -15,6 +15,9 @@ using Microsoft.UI.Xaml.Media;
 
 namespace MapControl
 {
+    using Helix.MapCore;
+    using Point = Helix.CoreTypes.Point;
+
     public class WmtsTileMatrixLayer : Panel
     {
         // zoomLevel is index of tileMatrix in a WmtsTileMatrixSet.TileMatrixes list.

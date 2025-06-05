@@ -8,6 +8,8 @@ using System.Windows.Media;
 
 namespace MapControl
 {
+    using Helix.MapCore;
+
     /// <summary>
     /// Base class of MapPolyline, MapPolygon and MapMultiPolygon.
     /// </summary>
@@ -90,8 +92,8 @@ namespace MapControl
 
             if (points.Any())
             {
-                var start = points.First();
-                var polyline = points.Skip(1).ToList();
+                var start = points.First().ToSystemPoint();
+                var polyline = points.Skip(1).Select(p => p.ToSystemPoint()).ToList();
                 var minX = start.X;
                 var maxX = start.X;
                 var minY = start.Y;

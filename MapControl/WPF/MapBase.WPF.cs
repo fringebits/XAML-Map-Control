@@ -5,6 +5,8 @@ using System.Windows.Media.Animation;
 
 namespace MapControl
 {
+    using Helix.MapCore;
+
     public partial class MapBase
     {
         public static readonly DependencyProperty ForegroundProperty =

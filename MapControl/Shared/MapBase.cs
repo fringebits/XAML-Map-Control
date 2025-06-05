@@ -12,6 +12,10 @@ using Microsoft.UI.Xaml.Media;
 
 namespace MapControl
 {
+    using Helix.MapCore;
+    using Point = Helix.CoreTypes.Point;
+    using Rect = Helix.CoreTypes.Rect;
+
     public interface IMapLayer : IMapElement
     {
         Brush MapBackground { get; }
@@ -233,6 +237,14 @@ namespace MapControl
         public Location ViewToLocation(Point point)
         {
             return MapProjection.MapToLocation(ViewTransform.ViewToMap(point));
+        }
+
+        /// <summary>
+        /// Transforms a Point in view coordinates to a Location in geographic coordinates.
+        /// </summary>
+        public Location ViewToLocation(System.Windows.Point point)
+        {
+            return ViewToLocation(point.ToCorePoint());
         }
 
         /// <summary>

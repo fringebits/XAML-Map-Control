@@ -7,6 +7,8 @@ using System.Windows.Media.Imaging;
 
 namespace MapControl
 {
+    using Helix.MapCore;
+
     public static partial class GeoImage
     {
         private static Task<GeoBitmap> LoadGeoTiff(string sourcePath)

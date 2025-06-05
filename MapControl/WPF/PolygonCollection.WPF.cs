@@ -7,6 +7,8 @@ using System.Windows;
 
 namespace MapControl
 {
+    using Helix.MapCore;
+
     /// <summary>
     /// An ObservableCollection of IEnumerable of Location. PolygonCollection adds a CollectionChanged
     /// listener to each element that implements INotifyCollectionChanged and, when such an element changes,

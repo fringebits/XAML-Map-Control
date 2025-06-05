@@ -15,6 +15,10 @@ using Microsoft.UI.Xaml.Media;
 
 namespace MapControl
 {
+    using Helix.MapCore;
+    using Point = Helix.CoreTypes.Point;
+    //using Rect = Helix.CoreTypes.Rect;
+
     /// <summary>
     /// Displays a standard Web Mercator map tile grid, e.g. an OpenStreetMap tile grid.
     /// </summary>

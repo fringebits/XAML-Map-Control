@@ -4,6 +4,8 @@ using System.Windows.Input;
 
 namespace MapControl
 {
+    using Helix.MapCore;
+
     public partial class MapItem
     {
         public static readonly DependencyProperty AutoCollapseProperty =

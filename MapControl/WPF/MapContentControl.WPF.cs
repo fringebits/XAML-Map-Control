@@ -3,6 +3,8 @@ using System.Windows.Controls;
 
 namespace MapControl
 {
+    using Helix.MapCore;
+
     /// <summary>
     /// ContentControl placed on a MapPanel at a geographic location specified by the Location property.
     /// </summary>

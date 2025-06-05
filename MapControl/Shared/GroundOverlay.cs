@@ -23,6 +23,8 @@ using Microsoft.UI.Xaml.Media;
 
 namespace MapControl
 {
+    using Helix.MapCore;
+
     public class GroundOverlay : MapPanel
     {
         private class ImageOverlay

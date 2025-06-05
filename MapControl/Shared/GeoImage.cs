@@ -27,14 +27,18 @@ using Shape = Avalonia.Controls.Shapes.Shape;
 
 namespace MapControl
 {
+    using Helix.MapCore;
+    using Point = Helix.CoreTypes.Point;
+    using Rect = Helix.CoreTypes.Rect;
+
     public static partial class GeoImage
     {
         private class GeoBitmap
         {
             public GeoBitmap(BitmapSource bitmap, Matrix transform, MapProjection projection)
             {
-                var p1 = transform.Transform(new Point());
-                var p2 = transform.Transform(new Point(
+                var p1 = transform.Transform(new System.Windows.Point());
+                var p2 = transform.Transform(new System.Windows.Point(
 #if AVALONIA
                     bitmap.PixelSize.Width, bitmap.PixelSize.Height));
 #else
@@ -42,7 +46,7 @@ namespace MapControl
 #endif
                 BitmapSource = bitmap;
                 LatLonBox = projection != null
-                    ? new LatLonBox(projection.MapToBoundingBox(new Rect(p1, p2)))
+                    ? new LatLonBox(projection.MapToBoundingBox(new Rect(p1.ToCorePoint(), p2.ToCorePoint())))
                     : new LatLonBox(p1.Y, p1.X, p2.Y, p2.X);
             }
 

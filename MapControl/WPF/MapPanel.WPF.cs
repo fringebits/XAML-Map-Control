@@ -5,6 +5,8 @@ using System.Windows.Media;
 
 namespace MapControl
 {
+    using Helix.MapCore;
+
     public partial class MapPanel
     {
         public static readonly DependencyProperty AutoCollapseProperty =

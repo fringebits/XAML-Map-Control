@@ -18,6 +18,10 @@ using Microsoft.UI.Xaml.Media;
 
 namespace MapControl
 {
+    using Helix.MapCore;
+    using Point = Helix.CoreTypes.Point;
+    using Rect = Helix.CoreTypes.Rect;
+
     /// <summary>
     /// Displays a single map image from a Web Map Service (WMS).
     /// </summary>
@@ -281,7 +285,7 @@ namespace MapControl
                     -ParentMap.ViewTransform.Rotation,
                     width / 2d, height / 2d);
 
-                var imagePos = transform.Transform(position);
+                var imagePos = transform.Transform(position.ToSystemPoint());
 
                 var queryParameters = new Dictionary<string, string>
                 {

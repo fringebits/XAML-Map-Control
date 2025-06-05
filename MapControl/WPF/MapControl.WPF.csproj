@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>net8.0-windows;net462</TargetFrameworks>
+        <TargetFrameworks>net9.0-windows</TargetFrameworks>
         <UseWPF>true</UseWPF>
         <DefineConstants>WPF</DefineConstants>
         <RootNamespace>MapControl</RootNamespace>
@@ -16,7 +16,29 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Compile Remove="..\Shared\AutoEquirectangularProjection.cs" />
+        <Compile Remove="..\Shared\AzimuthalEquidistantProjection.cs" />
+        <Compile Remove="..\Shared\AzimuthalProjection.cs" />
+        <Compile Remove="..\Shared\BoundingBox.cs" />
+        <Compile Remove="..\Shared\CenteredBoundingBox.cs" />
+        <Compile Remove="..\Shared\EquirectangularProjection.cs" />
+        <Compile Remove="..\Shared\Etrs89UtmProjection.cs" />
+        <Compile Remove="..\Shared\GnomonicProjection.cs" />
+        <Compile Remove="..\Shared\LatLonBox.cs" />
+        <Compile Remove="..\Shared\Location.cs" />
+        <Compile Remove="..\Shared\LocationCollection.cs" />
+        <Compile Remove="..\Shared\MapProjection.cs" />
+        <Compile Remove="..\Shared\MapProjectionFactory.cs" />
+        <Compile Remove="..\Shared\Nad27UtmProjection.cs" />
+        <Compile Remove="..\Shared\Nad83UtmProjection.cs" />
+        <Compile Remove="..\Shared\OrthographicProjection.cs" />
+        <Compile Remove="..\Shared\PolarStereographicProjection.cs" />
         <Compile Remove="..\Shared\PolygonCollection.cs" />
+        <Compile Remove="..\Shared\StereographicProjection.cs" />
+        <Compile Remove="..\Shared\TransverseMercatorProjection.cs" />
+        <Compile Remove="..\Shared\WebMercatorProjection.cs" />
+        <Compile Remove="..\Shared\Wgs84UtmProjection.cs" />
+        <Compile Remove="..\Shared\WorldMercatorProjection.cs" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework)'=='net462'">
@@ -27,5 +49,9 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="9.0.5" />
         <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="9.0.5" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\..\Libraries\Helix.MapCore\Helix.MapCore.csproj" />
     </ItemGroup>
 </Project>

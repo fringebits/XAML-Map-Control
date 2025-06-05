@@ -9,6 +9,8 @@ using Microsoft.UI.Xaml.Media;
 
 namespace MapControl
 {
+    using Point = Helix.CoreTypes.Point;
+
     /// <summary>
     /// Defines the transformation between projected map coordinates in meters
     /// and view coordinates in pixels.
@@ -41,7 +43,7 @@ namespace MapControl
         /// </summary>
         public Point MapToView(Point point)
         {
-            return MapToViewMatrix.Transform(point);
+            return MapToViewMatrix.Transform(point.ToSystemPoint()).ToCorePoint();
         }
 
         /// <summary>
@@ -49,7 +51,7 @@ namespace MapControl
         /// </summary>
         public Point ViewToMap(Point point)
         {
-            return ViewToMapMatrix.Transform(point);
+            return ViewToMapMatrix.Transform(point.ToSystemPoint()).ToCorePoint();
         }
 
         /// <summary>

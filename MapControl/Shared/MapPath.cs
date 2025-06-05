@@ -8,6 +8,9 @@ using Microsoft.UI.Xaml;
 
 namespace MapControl
 {
+    using Helix.MapCore;
+    using Point = Helix.CoreTypes.Point;
+
     /// <summary>
     /// A path element with a Data property that holds a Geometry in view coordinates or
     /// projected map coordinates that are relative to an origin Location.

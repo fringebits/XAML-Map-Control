@@ -4,6 +4,8 @@ using System.Windows.Input;
 
 namespace MapControl
 {
+    using Point = Helix.CoreTypes.Point;
+
     /// <summary>
     /// MapBase with default input event handling.
     /// </summary>
@@ -53,8 +55,8 @@ namespace MapControl
         {
             base.OnManipulationDelta(e);
 
-            TransformMap(e.ManipulationOrigin,
-                (Point)e.DeltaManipulation.Translation,
+            TransformMap(e.ManipulationOrigin.ToCorePoint(),
+                e.DeltaManipulation.Translation.ToCorePoint(),
                 e.DeltaManipulation.Rotation,
                 e.DeltaManipulation.Scale.LengthSquared / 2d);
         }
@@ -66,7 +68,7 @@ namespace MapControl
             if (Keyboard.Modifiers == ModifierKeys.None &&
                 CaptureMouse())
             {
-                mousePosition = e.GetPosition(this);
+                mousePosition = e.GetPosition(this).ToCorePoint();
             }
         }
 
@@ -89,7 +91,7 @@ namespace MapControl
             {
                 var p = e.GetPosition(this);
                 TranslateMap(new Point(p.X - mousePosition.Value.X, p.Y - mousePosition.Value.Y));
-                mousePosition = p;
+                mousePosition = p.ToCorePoint();
             }
             else if (e.LeftButton == MouseButtonState.Pressed &&
                 Keyboard.Modifiers == ModifierKeys.None &&
@@ -97,7 +99,7 @@ namespace MapControl
             {
                 // Set mousePosition when no MouseLeftButtonDown event was received.
                 //
-                mousePosition = e.GetPosition(this);
+                mousePosition = e.GetPosition(this).ToCorePoint();
             }
         }
 
@@ -113,7 +115,7 @@ namespace MapControl
             {
                 // Zoom to integer multiple of MouseWheelZoomDelta.
                 //
-                ZoomMap(e.GetPosition(this),
+                ZoomMap(e.GetPosition(this).ToCorePoint(),
                     MouseWheelZoomDelta * Math.Round(TargetZoomLevel / MouseWheelZoomDelta + mouseWheelDelta));
 
                 mouseWheelDelta = 0d;

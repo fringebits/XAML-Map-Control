@@ -1,7 +1,5 @@
 ﻿using System;
-#if WPF
-using System.Windows;
-#endif
+using Helix.MapCore;
 
 namespace MapControl
 {

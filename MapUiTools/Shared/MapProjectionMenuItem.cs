@@ -13,6 +13,8 @@ using Avalonia.Metadata;
 
 namespace MapControl.UiTools
 {
+    using Helix.MapCore;
+
 #if WPF
     [ContentProperty(nameof(MapProjection))]
 #elif UWP || WINUI

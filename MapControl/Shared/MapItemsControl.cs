@@ -12,6 +12,9 @@ using Microsoft.UI.Xaml.Controls;
 
 namespace MapControl
 {
+    using Helix.MapCore;
+    using Point = Helix.CoreTypes.Point;
+
     /// <summary>
     /// An ItemsControl with selectable items on a Map. Uses MapItem as item container.
     /// </summary>
@@ -64,13 +67,13 @@ namespace MapControl
             });
         }
 
-        public void SelectItemsByPosition(Predicate<Point> predicate)
+        public void SelectItemsByPosition(Predicate<System.Windows.Point> predicate)
         {
             SelectItems(item =>
             {
                 var position = MapPanel.GetViewPosition(ContainerFromItem(item));
 
-                return position.HasValue && predicate(position.Value);
+                return position.HasValue && predicate(position.Value.ToSystemPoint());
             });
         }
 

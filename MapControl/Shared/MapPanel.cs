@@ -20,6 +20,10 @@ using Microsoft.UI.Xaml.Media;
 /// </summary>
 namespace MapControl
 {
+    using Helix.MapCore;
+    using Point = Helix.CoreTypes.Point;
+    using Rect = Helix.CoreTypes.Rect;
+
     /// <summary>
     /// Optional interface to hold the value of the attached property MapPanel.ParentMap.
     /// </summary>
@@ -286,7 +290,7 @@ namespace MapControl
 
                 element.Width = viewRect.Width;
                 element.Height = viewRect.Height;
-                element.Arrange(viewRect);
+                element.Arrange(viewRect.ToSystemRect());
 
                 rotation += parentMap.ViewTransform.Rotation;
 
@@ -335,7 +339,7 @@ namespace MapControl
                     break;
             }
 
-            element.Arrange(new Rect(x, y, size.Width, size.Height));
+            element.Arrange(new System.Windows.Rect(x, y, size.Width, size.Height));
         }
 
         private static void ArrangeElement(FrameworkElement element, Size panelSize)
@@ -382,7 +386,7 @@ namespace MapControl
                     break;
             }
 
-            element.Arrange(new Rect(x, y, width, height));
+            element.Arrange(new System.Windows.Rect(x, y, width, height));
         }
 
         internal static Size GetDesiredSize(FrameworkElement element)

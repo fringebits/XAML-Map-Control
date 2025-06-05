@@ -13,6 +13,8 @@ using System;
 
 namespace MapControl
 {
+    using Helix.MapCore;
+
     /// <summary>
     /// Container class for an item in a MapItemsControl.
     /// </summary>

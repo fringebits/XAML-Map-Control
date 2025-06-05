@@ -15,6 +15,10 @@ using Microsoft.UI.Xaml.Media;
 
 namespace MapControl
 {
+    using Helix.MapCore;
+    using Point = Helix.CoreTypes.Point;
+    using Rect = Helix.CoreTypes.Rect;
+
     /// <summary>
     /// Draws a graticule overlay.
     /// </summary>
@@ -360,11 +364,11 @@ namespace MapControl
         {
             var figure = new PathFigure
             {
-                StartPoint = p1,
+                StartPoint = p1.ToSystemPoint(),
                 IsFilled = false
             };
 
-            figure.Segments.Add(new LineSegment { Point = p2 });
+            figure.Segments.Add(new LineSegment { Point = p2.ToSystemPoint() });
             return figure;
         }
     }

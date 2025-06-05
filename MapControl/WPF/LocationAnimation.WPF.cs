@@ -4,6 +4,8 @@ using System.Windows.Media.Animation;
 
 namespace MapControl
 {
+    using Helix.MapCore;
+
     public class LocationAnimation : AnimationTimeline
     {
         public override Type TargetPropertyType => typeof(Location);

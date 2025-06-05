@@ -9,6 +9,8 @@ using Microsoft.UI.Xaml;
 
 namespace MapControl
 {
+    using Helix.MapCore;
+
     /// <summary>
     /// A polyline defined by a collection of Locations.
     /// </summary>

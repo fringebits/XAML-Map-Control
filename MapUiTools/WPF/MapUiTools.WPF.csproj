@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>net8.0-windows;net462</TargetFrameworks>
+        <TargetFrameworks>net9.0-windows</TargetFrameworks>
         <UseWPF>true</UseWPF>
         <DefineConstants>WPF</DefineConstants>
         <RootNamespace>MapControl.UiTools</RootNamespace>
@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\..\..\Libraries\Helix.MapCore\Helix.MapCore.csproj" />
         <ProjectReference Include="..\..\MapControl\WPF\MapControl.WPF.csproj" />
     </ItemGroup>
 </Project>

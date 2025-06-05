@@ -4,42 +4,26 @@ using System.Globalization;
 
 namespace MapControl
 {
-    public class LocationConverter : TypeConverter
+    public static class CoreTypeConverters
     {
-        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
+        public static Helix.CoreTypes.Point ToCorePoint(this System.Windows.Point value)
         {
-            return sourceType == typeof(string);
+            return new Helix.CoreTypes.Point(value.X, value.Y);
         }
 
-        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        public static System.Windows.Point ToSystemPoint(this Helix.CoreTypes.Point value)
         {
-            return Location.Parse((string)value);
-        }
-    }
-
-    public class LocationCollectionConverter : TypeConverter
-    {
-        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
-        {
-            return sourceType == typeof(string);
+            return new System.Windows.Point(value.X, value.Y);
         }
 
-        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        public static Helix.CoreTypes.Point ToCorePoint(this System.Windows.Vector value)
         {
-            return LocationCollection.Parse((string)value);
-        }
-    }
-
-    public class BoundingBoxConverter : TypeConverter
-    {
-        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
-        {
-            return sourceType == typeof(string);
+            return new Helix.CoreTypes.Point(value.X, value.Y);
         }
 
-        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        public static System.Windows.Rect ToSystemRect(this Helix.CoreTypes.Rect value)
         {
-            return BoundingBox.Parse((string)value);
+            return new System.Windows.Rect(value.X, value.Y, value.Width, value.Height);
         }
     }
 

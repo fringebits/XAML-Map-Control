@@ -101,5 +101,10 @@ namespace MapControl
             figure.Segments.Add(new PolyLineSegment(points.Skip(1), true));
             return figure;
         }
+
+        private static PathFigure CreatePolylineFigure(IEnumerable<Helix.CoreTypes.Point> points)
+        {
+            return CreatePolylineFigure(points.Select(p => p.ToSystemPoint()));
+        }
     }
 }

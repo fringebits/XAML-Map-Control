@@ -11,6 +11,8 @@ using Microsoft.UI.Xaml.Media;
 
 namespace MapControl
 {
+    using Helix.MapCore;
+
     public class BoundingBoxTileSource : TileSource
     {
         public override Uri GetUri(int column, int row, int zoomLevel)

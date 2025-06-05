@@ -1,9 +1,7 @@
-﻿#if WPF
-using System.Windows;
-#endif
-
-namespace MapControl
+﻿namespace MapControl
 {
+    using Helix.CoreTypes;
+
     public class WmtsTileMatrix
     {
         // See 07-057r7_Web_Map_Tile_Service_Standard.pdf, section 6.1.a, page 8:

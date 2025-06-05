@@ -18,6 +18,10 @@ using Microsoft.UI.Xaml.Media;
 
 namespace MapControl
 {
+    using Helix.MapCore;
+    using Point = Helix.CoreTypes.Point;
+    using Rect = Helix.CoreTypes.Rect;
+
     /// <summary>
     /// Displays a single map image, e.g. from a Web Map Service (WMS).
     /// The image must be provided by the abstract GetImageAsync() method.
