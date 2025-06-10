@@ -61,47 +61,57 @@ namespace MapControl
                 e.DeltaManipulation.Scale.LengthSquared / 2d);
         }
 
-        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        // NUTRON_BEGIN - @mikeg: move responsibility of panning
+        public void MousePanBegin(MouseEventArgs e)
         {
-            base.OnMouseLeftButtonDown(e);
-
-            if (Keyboard.Modifiers == ModifierKeys.None &&
-                CaptureMouse())
+            if (this.CaptureMouse())
             {
-                mousePosition = e.GetPosition(this).ToCorePoint();
+                this.mousePosition = e.GetPosition(this).ToCorePoint();
             }
         }
 
-        protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
+        public void MousePanEnd(MouseEventArgs e)
         {
-            base.OnMouseLeftButtonUp(e);
-
-            if (mousePosition.HasValue)
+            if (this.mousePosition.HasValue)
             {
-                mousePosition = null;
-                ReleaseMouseCapture();
+                this.mousePosition = null;
+                this.ReleaseMouseCapture();
             }
         }
 
-        protected override void OnMouseMove(MouseEventArgs e)
+        public void MousePanMove(MouseEventArgs e)
         {
-            base.OnMouseMove(e);
-
             if (mousePosition.HasValue)
             {
                 var p = e.GetPosition(this);
                 TranslateMap(new Point(p.X - mousePosition.Value.X, p.Y - mousePosition.Value.Y));
                 mousePosition = p.ToCorePoint();
             }
-            else if (e.LeftButton == MouseButtonState.Pressed &&
-                Keyboard.Modifiers == ModifierKeys.None &&
-                CaptureMouse())
-            {
-                // Set mousePosition when no MouseLeftButtonDown event was received.
-                //
-                mousePosition = e.GetPosition(this).ToCorePoint();
-            }
         }
+        // NUTRON_BEGIN - @mikeg: move responsibility of panning
+
+
+        //protected override void OnMouseMove(MouseEventArgs e)
+        //{
+        //    base.OnMouseMove(e);
+
+        //    //// #mikeg: need to fix this based on "mouse button mode" to avoid assumptions about left/right 
+
+        //    //if (mousePosition.HasValue)
+        //    //{
+        //    //    var p = e.GetPosition(this);
+        //    //    TranslateMap(new Point(p.X - mousePosition.Value.X, p.Y - mousePosition.Value.Y));
+        //    //    mousePosition = p.ToCorePoint();
+        //    //}
+        //    //else if (e.LeftButton == MouseButtonState.Pressed &&
+        //    //    Keyboard.Modifiers == ModifierKeys.None &&
+        //    //    CaptureMouse())
+        //    //{
+        //    //    // Set mousePosition when no MouseLeftButtonDown event was received.
+        //    //    //
+        //    //    mousePosition = e.GetPosition(this).ToCorePoint();
+        //    //}
+        //}
 
         protected override void OnMouseWheel(MouseWheelEventArgs e)
         {
