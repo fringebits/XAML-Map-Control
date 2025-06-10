@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimpleLogger;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -66,17 +67,16 @@ namespace MapControl
         {
             if (this.CaptureMouse())
             {
+                Logger.Log($"Capture Mouse");
                 this.mousePosition = e.GetPosition(this).ToCorePoint();
             }
         }
 
         public void MousePanEnd(MouseEventArgs e)
         {
-            if (this.mousePosition.HasValue)
-            {
-                this.mousePosition = null;
-                this.ReleaseMouseCapture();
-            }
+            Logger.Log($"Release Mouse");
+            this.mousePosition = null;
+            this.ReleaseMouseCapture();
         }
 
         public void MousePanMove(MouseEventArgs e)
